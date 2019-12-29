@@ -8,6 +8,27 @@ class Counter extends React.Component {
       count:0
     }
   }
+  componentDidMount() {
+      const stringCount = localStorage.getItem('count');
+    const count = parseInt(stringCount, 10);
+    if (!isNaN(count)) {
+      this.setState(() => ({ count: count }))
+
+
+
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.count !== this.state.count) {
+      // const json = JSON.stringify(this.state.count);
+      localStorage.setItem('count', this.state.count);
+      // console.log('saving data');
+    }
+  }
+  // componentWillUnmount() {
+  //   console.log('will unmount');
+  // }
   handleAddOne() {
     this.setState((preveState) => {
       return {
@@ -42,81 +63,8 @@ class Counter extends React.Component {
   }
 }
 
+
+
 ReactDOM.render(<Counter/>, document.getElementById('app'));
 
 
-// let count = 0;
-// const addOne = () => {
-//   count++;
-//   renderCounterApp();
-
-// };
-// const minusOne = () => {
-//   count--;
-//   renderCounterApp();
-
-// }
-// const reset = () => {
-//   count = 0;
-//   renderCounterApp();
-// };
-
-// const appRoot = document.getElementById('app');
-
-
-// const renderCounterApp = () => {
-//   const templateTwo = (
-//     <div>
-//       <h1>Count: {count}</h1>
-//       <button onClick={addOne}>one</button>
-//       <button onClick={minusOne}>minus one</button>
-//       <button onClick={reset}>reset</button>
-//     </div>
-//   );
-//   ReactDOM.render(templateTwo, appRoot);
-
-// };
-// renderCounterApp();
-// const user = {
-//   name: 'Kate',
-//   age: 25,
-//   location: 'Seattle'
-
-// }
-// var useName = 'Andrew';
-// var userAge = 25;
-// var userLocation = 'Austin';
-// const test = (
-//   <div>
-//     <h1>{user.name}</h1>
-//     <p>Age: {user.age}</p>
-//     <p>Location: {user.location}</p>
-//   </div>
-// );
-// const dog = {
-//   name: 'Hulk',
-//   age: 12 ,
-//   location: 'Seattle' 
-//   // location: 'Seattle'
-// }
-// function getLocation(location) {
-//   if (location) {
-//     return <p>Location: {location}</p>;
-//   } else {
-//     return undefined;
-//   }
-
-
-// }
-
-// let testTwo = (
-//   <div>
-//     <h1>{dog.name ? dog.name : 'Anonymus'}</h1>
-//     {(dog.age >= 2) && <p>Age: {dog.age}</p>}
-//     {getLocation(dog.location)}
-//   </div>
-
-// );
-
-
-// ReactDOM.render(testTwo, appRoot);
