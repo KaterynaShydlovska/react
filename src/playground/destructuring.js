@@ -1,3 +1,5 @@
+ //Object destructing
+
 // const person = {
 //   name: 'Kate',
 //   age: 25,
@@ -21,15 +23,32 @@
 //   console.log(`It's ${tempreture} in ${city}.`); 
 // }
 
-const book = {
-  title: 'Master',
-  aouthor: 'Bulgakov',
-  publisher: {
-    // name: 'Someone'
-  }
-};
+// const book = {
+//   title: 'Master',
+//   aouthor: 'Bulgakov',
+//   publisher: {
+//     // name: 'Someone'
+//   }
+// };
 
-const {name: publisherName = 'Self-Publishe' } = book.publisher;
+// const {name: publisherName = 'Self-Publishe' } = book.publisher;
 
-console.log(publisherName);
+// console.log(publisherName);
 
+
+ //Array destructing
+
+
+// const address = ['409 23rd Ave', 'Seattle', 'Washington', '98144'];
+
+// const [street, city, state, zip] = address;
+// const [, city, state = 'New York'] = address;
+
+// console.log(`You are in ${city} ${state}.`)
+
+const item = ['Coffee(hot)', '$2.00', '$2.50', '$2.75'];
+
+// console.log(`A medium Coffe(hot) cost $2.50`);
+const [coffee,  , mediumPrise] = item;
+
+console.log(`A medium ${coffee} cost ${mediumPrise}`);
