@@ -1,4 +1,51 @@
-import { createStore, combineRedusers } from 'redux';
+import { createStore, combineReducers } from 'redux';
+// ADD_EXPENSE
+// REMOVE_EXPENSE
+// EDIT_EXPENSE
+//SET_TEXT_FILTER
+//SORT_BY_AMOUNT
+//SET_START_DATE
+//SET_END_DATE
+
+//Expenses Reduser
+
+const expensesReducerDefaultState = [];
+
+const expensesReducer = (state = expensesReducerDefaultState, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+};
+
+const filterReducersDefault = {
+  text: '',
+  sortBy: 'date',
+  startDate: undefined,
+  endDate: undefined
+};
+
+const filterReducer = (state = filterReducersDefault, action) => {
+  switch (action.type) {
+    default:
+      return state;
+  }
+}
+
+//Filters Reduser
+//text = '', sortBy => 'date', startDate => undefined, endDate => undefined
+
+
+//Store creation
+
+const store = createStore(
+  combineReducers({
+    expenses: expensesReducer,
+    filters: filterReducer
+  })
+);
+
+console.log(store.getState());
 
 const demoState = {
   expenses: [{
